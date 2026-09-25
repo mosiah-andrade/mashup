@@ -1,103 +1,117 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import Icon from '../public/P-Logo-Marca.png';
-import Logo from '../public/Perscrutar-ApresentaçãoIot.png';
-import octops from '../public/octops.png';
+import MenuLandingPage from "./components/menuLandingPage";
+import { MdOutlineRocketLaunch } from "react-icons/md";
+import { IoPieChartOutline } from "react-icons/io5";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { MdOutlineHandshake } from "react-icons/md";
+import { MdOutlineVerified } from "react-icons/md";
 
 
-export default function login() {
-  const router = useRouter();
-  const user = {
-    email: 'admin@senac.edu',
-    password: 'admin'
-  };
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push('/home')
-  };
-
-  const handleSingIn = () => {
-    router.push('/register')
-  }
-
+export default function Page() {
   return (
-    <div className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center bg-blue-950  p-4 overflow-hidden">
-      
-      
-      <main className="flex flex-1 w-full max-w-xl flex-col bg-gray-200 rounded-lg items-center justify-center py-12 px-6 lg:px-16 sm:items-start">
-        <div className='flex flex-col m-auto'>
-          <Image
-            src="https://tse3.mm.bing.net/th/id/OIP.qQJSBsXTGL_EDB97awxL_wHaEc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-            alt="Logo Perscrutar"
-            width={300}
-            height={128}
-            className="h-32 w-auto object-contain"
-            unoptimized
-          />
-          
-          <p className="mt-4 text-1xl text-center w-full border-black-10">
-            Match Up
-          </p>
+    <div className="flex h-[100vh] w-full flex-col">
+      <MenuLandingPage />
+
+      <main
+        className="flex h-full w-full flex-col items-center justify-center "
+        style={{
+          backgroundImage: "url('/bg-lp.png')",
+          backgroundRepeat: "repeat-y",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="flex h-8 w-fit items-center gap-2 rounded-full bg-[#EFF4FF] px-4 text-[#004AC6]">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-[#004AC6]" />
+
+          <span className="font-jakarta text-[11px] font-bold">
+            A PLATAFORMA INTELIGENTE DE CONEXÃO DE CAPITAL & STARTUPS
+          </span>
         </div>
-        
-        
-        <form onSubmit={handleLogin} className="mt-8 w-full max-w-md">
-          <div className="flex flex-col gap-4">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="E-mail"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="Senha"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+
+        <h1 className="mt-6 text-center text-7xl font-bold max-w-[900px] leading-[4rem] text-[#1C1C1C]">
+          Conectando startups às{" "}
+          <span className="bg-gradient-to-r from-[#004AC6] via-[#712AE2] to-[#2563EB] bg-clip-text text-transparent">
+            oportunidades certas.
+          </span>
+        </h1>
+
+        <p className="mt-6 text-center text-lg text-gray-600 max-w-[700px]">
+          Encontre investidores alinhados rigorosamente ao seu negócio ou descubra startups de alto crescimento com métricas comprovadas e diligência prévia.
+        </p>
+
+        <div className="flex flex-col items-center gap-4">
+          <div className="mt-6 flex gap-4">
+            <a
+              href="#"
+              className="flex items-center rounded-md bg-[#004AC6] px-6 py-3 text-sm font-blold text-white hover:bg-[#2563EB]"
+            >
+              <MdOutlineRocketLaunch className="mr-2" />
+              Sou uma Startup
+            </a>
+            <a
+              href="#"
+              className="flex items-center rounded-md border border-[#004AC6] px-6 py-3 text-sm font-bold text-[#004AC6] hover:bg-[#EFF4FF]"
+            >
+              <IoPieChartOutline className="mr-2 text-purple-800" />
+              Sou Investidor
+            </a>
           </div>
-          
-          <div className="flex items-center mt-4">
-            <input type="checkbox" name="remember" id="remember" className="mr-2 h-4 w-4" />
-            <label htmlFor="remember" className="text-lg font-medium select-none">
-              Manter-me conectado
-            </label>
+          <div className=" flex flex-row gap-4 text-sm text-gray-500">
+            <div>
+              <FaRegCheckCircle className="mr-2 inline text-green-700" />
+              Sem mensalidade oculta.
+            </div>
+            <div>
+              <FaRegCheckCircle className="mr-2 inline text-green-700" />
+              Diligência prévia auditada
+            </div>
+            <div>
+              <FaRegCheckCircle className="mr-2 inline text-green-700" />
+              +450 rodadas facilitadas
+            </div>
           </div>
-          
-          <button
-            type="submit"
-            className="rounded-[8.066px] bg-blue-950 text-white hover:bg-blue-800 font-bold py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mt-6 cursor-pointer transition-colors button" 
-          >
-            Entrar
-          </button>
+        </div>
 
-          <button
-            type="button"
-            onClick={handleSingIn}
-            className="rounded-[8.066px] border border-blue-950 hover:text-white hover:bg-blue-600 font-bold py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mt-6 cursor-pointer transition-colors button" 
-          >
-            cadastrar
-          </button>
+        <div className="mt-9 flex h-8 w-fit items-center gap-2 rounded-full bg-[#FFFFF] px-4 shadow-xl">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-green-700" />
 
-        </form>
-      </main> 
-      
-      <aside className="flex flex-1 items-center justify-center p-4 w-full h-full lg:max-w-[50vw]"> 
-        
-      </aside>
+          <span className="font-jakarta text-[11px] font-bold">
+            Match Mútuo Confirmado! Sinergia de Tese & Governança 
+          </span>
+          <span className="font-jakarta text-[11px] font-bold text-green-700 bg-[#E6F4EA] px-2 rounded-sm">
+            94% Fit
+          </span>
+        </div>
 
+        <div className="mt-6 flex justify-center h-fit w-[60%] bg-blue-100 p-10 rounded-lg " >
+          <section className="flex flex-col gap-4 w-fit p-4 bg-white rounded-lg shadow-md"  >
+            
+            <div className="flex flex-row items-start gap-2 w-fit p-4 flex-start"  >
+              <div className="w-fit p-3 mt-2 bg-blue-100 rounded-lg text-center text-blue-700 font-bold"  >  
+                FF
+              </div>
+              <div className="flex flex-col gap-1"  >
+                <h2 className="font-jakarta text-lg font-bold text-black">FinFlow <MdOutlineVerified className="inline ml-2 text-green-600" /></h2>
+                <span className="font-jakarta text-[12px] font-thin text-gray-600 max-w-[220px]">Infraestrutura de Cobrança B2B & Split API</span>
+              </div>
+              <span className="font-jakarta text-[12px] font-thin text-gray-600 max-w-[220px] bg-purple-200 p-1 rounded-full ml-4 text-purple-700 px-2 font-bold">
+                Seed
+              </span>
+            </div>
+          </section>
+          <div className="flex flex-col items-center gap-2 w-fit p-4"  >
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-[#004AC6]  to-[#712AE2]">
+              <MdOutlineHandshake className="text-4xl text-white" />
+            </div>
+            <span className="font-jakarta text-sm font-thin text-black">MATCH</span>
+          </div>
+          <div className="flex flex-col gap-4 w-fit p-4 bg-white rounded-lg shadow-md"  >
+
+          </div>
+        </div>
+
+      </main>
     </div>
   );
 }
