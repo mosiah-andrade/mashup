@@ -559,14 +559,27 @@ export default function Page() {
 
             
           </div>
-          <div className="flex flex-row  gap-6 p-8 bg-gradient-to-b from-[#6063EE] to-[#FFFFFF]  w-full  h-full px-10 ">
+          <div className="flex flex-row gap-6 p-8 bg-gradient-to-b from-[#6063EE]/20 to-[#FFFFFF] w-full h-full px-10 justify-center">
 
-              <div className="flex flex-col  gap-6 p-8 bg-white rounded-3xl w-full  h-full px-10 max-w-[50%]">
 
+              <div className="flex flex-col  gap-4 p-20  h-full px-20 max-w-[40%] align-center justify-center">
+                <span className="text-[#004AC6] font-bold">INTELIGÊNCIA CONTEXTUAL</span>
+                <h3 className="text-[36px] leading-8 font-bold max-w-[90%]">Por dentro do motor de alta convicção do MatchUp.</h3>
+                <p className="text-[18px]">Não somos um classificado aberto. Nosso algoritmo cruza dezenas de variáveis estruturadas para garantir que cada notificação de oportunidade tenha alta probabilidade real de investimento.</p>
+                <div className="bg-[#6FFBBE]/30 w-full p-4 rounded-xl flex gap-4">
+                  <MdOutlineVerified className="text-[45px] text-[#006242]"/>
+                  <p className=" font-bold">
+                    Elimina até 90% das reuniões infrutíferas tanto para o fundador em sprint de captação quanto para o anjo.
+                  </p>
+                </div>
+                <div className="flex gap-4">
+                  <p>✓ Atualização contínua de pesos</p>
+                  <p>✓ Feedback loop pós-reunião</p>
+                </div>
               </div>
 
 
-              <div className="flex flex-row gap-6 p-8  rounded-3xl w-full  h-full px-10 max-w-[50%] flex-wrap">
+              <div className="flex flex-row gap-6 p-8  rounded-3xl w-full  h-full px-10  max-w-[50%] flex-wrap">
                 <div className="flex flex-col gap-4 w-[350px] h-[175px] bg-white p-4 rounded-lg shadow-sm">
                   <div className="flex flex-row items-center justify-between">
                     <div className="flex flex-row items-center gap-2">
@@ -655,6 +668,24 @@ export default function Page() {
               </div>
 
             </div>
+            <footer className="bg-black w-full flex flex-col items-center justify-center gap-4 py-10 m-[-50px]">
+              <span className="text-sm font-bold text-white">MATCHUP</span>
+              <span className="text-4xl font-bold text-white">Conectando startups às oportunidades certas.</span>
+              <p className="text-center text-lg text-white max-w-[700px]">
+                Encontre investidores alinhados rigorosamente ao seu negócio ou descubra startups de alto crescimento com métricas comprovadas e diligência prévia.
+              </p>
+
+              <div className="flex flex-row items-center justify-around w-[1500px]  flex-nowrap gap-20 mt-10 h-full pb-10">
+                <a href="#" className="flex items-center px-8 gap-2 py-4 bg-white w-fit rounded-md  text-[#004AC6] hover:bg-[#004AC6] hover:text-gray-200  ">
+                  Sou uma Startup 
+                  <FaArrowRight className="mr-2 "/>
+                </a>
+                <a href="#" className="flex items-center px-8 gap-2 py-4 bg-white w-fit rounded-md  text-[#004AC6] hover:bg-[#004AC6] hover:text-gray-200  ">
+                  Sou Investidor 
+                  <FaArrowRight className="mr-2 "/>
+                </a>
+              </div>
+            </footer>
         </div>
       </main>
     </div>

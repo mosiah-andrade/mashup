@@ -29,7 +29,7 @@ export default function menuLandingPage(){
                 </a>
             </nav>
             <div className="flex items-center gap-4 ml-auto">
-                <a href="" className=" hover:text-blue-800">
+                <a href="/login" className=" hover:text-blue-800">
                     Entrar
                 </a>
                 <a
