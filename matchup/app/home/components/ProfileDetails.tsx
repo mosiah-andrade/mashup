@@ -10,8 +10,9 @@ export default function ProfileDetails({ role }: { role: Role }) {
   const router = useRouter();
   const params = useSearchParams();
   const requestedId = params.get("profile");
-  const fallback = getProfilesForRole(role)[0];
-  const profile = getProfile(requestedId) ?? fallback;
+  const candidates = getProfilesForRole(role);
+  const fallback = candidates[0];
+  const profile = candidates.find((item) => item.id === requestedId) ?? fallback;
 
   if (!profile) {
     router.replace("/home/" + role);
