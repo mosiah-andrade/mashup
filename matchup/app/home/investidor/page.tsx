@@ -190,6 +190,7 @@ export default function Investidor() {
 
                 {/* MATCH */}
                 <button
+                    onClick={() => router.push("/home/investidor/match")}
                     className="
                         w-12 h-12 rounded-full
                         bg-emerald-400
