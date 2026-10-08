@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Check, Eye, MessageSquare, Sparkles } from "lucide-react";
 import { createMockMatch } from "../../../lib/mock-store";
-import { getProfile, getProfilesForRole } from "../../../lib/mock-data";
+import { getProfilesForRole } from "../../../lib/mock-data";
 import type { Role } from "../../../lib/types";
 
 export default function MatchResult({ role }: { role: Role }) {
