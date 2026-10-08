@@ -41,7 +41,8 @@ export function OnboardingShell({
   }
 
   function next() {
-    if (step < 3) setStep(step + 1);\n    else onComplete?.();
+    if (step < 3) setStep(step + 1);
+    else onComplete?.();
   }
 
   function back() {
