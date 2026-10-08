@@ -1,103 +1,59 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import Icon from '../public/P-Logo-Marca.png';
-import Logo from '../public/Perscrutar-ApresentaçãoIot.png';
-import octops from '../public/octops.png';
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { startMockSession, getMockSession } from "../../lib/mock-auth";
 
-
-export default function login() {
+export default function LoginPage() {
   const router = useRouter();
-  const user = {
-    email: 'admin@senac.edu',
-    password: 'admin'
-  };
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
+  const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push('/home')
-  };
+  const handleLogin = (event: FormEvent) => {
+    event.preventDefault();
+    setError("");
 
-  const handleSingIn = () => {
-    router.push('/register')
-  }
+    if (!email.trim() || !email.includes("@")) {
+      setError("Informe um e-mail válido.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("A senha deve ter pelo menos 6 caracteres.");
+      return;
+    }
+
+    startMockSession(email.trim().toLowerCase());
+    const role = getMockSession()?.role;
+    if (remember) window.localStorage.setItem("matchup-remember", "true");
+
+    router.push(role ? "/home/" + role : "/onboarding");
+  };
 
   return (
-    <div className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center bg-blue-950  p-4 overflow-hidden">
-      
-      
-      <main className="flex flex-1 w-full max-w-xl flex-col bg-gray-200 rounded-lg items-center justify-center py-12 px-6 lg:px-16 sm:items-start">
-        <div className='flex flex-col m-auto'>
-          <Image
-            src="https://tse3.mm.bing.net/th/id/OIP.qQJSBsXTGL_EDB97awxL_wHaEc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-            alt="Logo Perscrutar"
-            width={300}
-            height={128}
-            className="h-32 w-auto object-contain"
-            unoptimized
-          />
-          
-          <p className="mt-4 text-1xl text-center w-full border-black-10">
-            Match Up
-          </p>
-        </div>
-        
-        
-        <form onSubmit={handleLogin} className="mt-8 w-full max-w-md">
-          <div className="flex flex-col gap-4">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="E-mail"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="Senha"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          
-          <div className="flex items-center mt-4">
-            <input type="checkbox" name="remember" id="remember" className="mr-2 h-4 w-4" />
-            <label htmlFor="remember" className="text-lg font-medium select-none">
-              Manter-me conectado
-            </label>
-          </div>
-          
-          <button
-            type="submit"
-            className="rounded-[8.066px] bg-blue-950 text-white hover:bg-blue-800 font-bold py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mt-6 cursor-pointer transition-colors button" 
-          >
-            Entrar
-          </button>
+    <main className="min-h-screen bg-slate-950 px-4 py-8">
+      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl items-center justify-center">
+        <section className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+          <button type="button" onClick={() => router.push("/")} className="text-xl font-black text-blue-700">MatchUp</button>
+          <p className="mt-8 text-xs font-bold uppercase tracking-widest text-blue-600">Acesso à plataforma</p>
+          <h1 className="mt-2 text-3xl font-bold text-slate-900">Entrar</h1>
+          <p className="mt-2 text-sm text-slate-500">No modo mock, use qualquer e-mail válido e uma senha com 6+ caracteres.</p>
 
-          <button
-            type="button"
-            onClick={handleSingIn}
-            className="rounded-[8.066px] border border-blue-950 hover:text-white hover:bg-blue-600 font-bold py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mt-6 cursor-pointer transition-colors button" 
-          >
-            cadastrar
-          </button>
+          <form onSubmit={handleLogin} className="mt-7 space-y-4">
+            <label className="block"><span className="mb-1 block text-xs font-semibold text-slate-700">E-mail</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="voce@empresa.com" className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100" /></label>
+            <label className="block"><span className="mb-1 block text-xs font-semibold text-slate-700">Senha</span><input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="••••••••" className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100" /></label>
 
-        </form>
-      </main> 
-      
-      <aside className="flex flex-1 items-center justify-center p-4 w-full h-full lg:max-w-[50vw]"> 
-        
-      </aside>
+            <label className="flex items-center gap-2 text-xs text-slate-600"><input type="checkbox" checked={remember} onChange={(event) => setRemember(event.target.checked)} /> Manter-me conectado</label>
 
-    </div>
+            {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-xs font-medium text-red-700">{error}</p>}
+
+            <button type="submit" className="w-full rounded-xl bg-blue-700 py-3 text-sm font-bold text-white transition hover:bg-blue-800">Entrar</button>
+            <button type="button" onClick={() => router.push("/register")} className="w-full rounded-xl border border-blue-700 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-50">Criar conta</button>
+          </form>
+        </section>
+      </div>
+    </main>
   );
 }
