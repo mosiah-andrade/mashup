@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Heart, ShieldAlert } from "lucide-react";
 import { createMockMatch } from "../../../lib/mock-store";
-import { getProfile, getProfilesForRole } from "../../../lib/mock-data";
+import { getProfilesForRole } from "../../../lib/mock-data";
 import type { Role } from "../../../lib/types";
 
 export default function ProfileDetails({ role }: { role: Role }) {
