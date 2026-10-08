@@ -21,6 +21,7 @@ export function OnboardingShell({
   setStep,
   data,
   setData,
+  onComplete,
 }: {
   role: Role;
   children: ReactNode;
@@ -28,6 +29,7 @@ export function OnboardingShell({
   setStep: (value: number) => void;
   data: OnboardingData;
   setData: (value: OnboardingData) => void;
+  onComplete?: () => void;
 }) {
   const title = role === "startup" ? "Cadastro Estruturado de Captação" : "Cadastro de Investidor";
   const subtitle = role === "startup"
