@@ -8,7 +8,7 @@ export default function InvestorOnboarding() {
   const { step, setStep, data, setData } = useOnboarding("investidor");
   const update = (key: string, value: string | boolean) => setData({ ...data, [key]: value });
 
-  if (step === 0) return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData}>
+  if (step === 0) return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/investidor")}>
     <Section number="1" title="Tipo de Investidor & Dados Institucionais">
       <div className="grid gap-2 sm:grid-cols-2">
         {["Investidor Anjo (PF)", "Syndicato / Pool", "Family Office / CVC", "Micro-VC / Fundo Seed"].map(x => <Choice key={x} label={x} active={data.investorType === x} onClick={() => update("investorType", x)} />)}
@@ -31,7 +31,7 @@ export default function InvestorOnboarding() {
     </Section>
   </OnboardingShell>;
 
-  if (step === 1) return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData}>
+  if (step === 1) return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/investidor")}>
     <Section number="3" title="Verticais Prioritárias & Filtros de Exclusão">
       <p className="mb-2 text-[9px] font-bold text-slate-500">VERTICAIS PRIORITÁRIAS</p>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -49,7 +49,7 @@ export default function InvestorOnboarding() {
     </Section>
   </OnboardingShell>;
 
-  if (step === 2) return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData}>
+  if (step === 2) return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/investidor")}>
     <Section number="5" title="Governança & Termos">
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Instrumentos Jurídicos Aceitos" value={String(data.instruments || "")} onChange={v => update("instruments", v)} placeholder="Mútuo Conversível • SAFE • Participação Direta" />
@@ -65,7 +65,7 @@ export default function InvestorOnboarding() {
     </Section>
   </OnboardingShell>;
 
-  return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData}>
+  return <OnboardingShell role="investidor" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/investidor")}>
     <Section number="7" title="Aprovação & Liquidez">
       <div className="rounded-xl bg-emerald-50 p-4 text-xs text-emerald-800">
         <p className="font-bold">✓ Cadastro pronto para auditoria</p>
