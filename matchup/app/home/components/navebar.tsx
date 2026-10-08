@@ -1,95 +1,79 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { Bell, Check, ChevronDown, LogOut, Settings2 } from "lucide-react";
 import Image from "next/image";
+import type { Role } from "../../../lib/types";
 
 export default function Navbar() {
-    const router = useRouter();
-    const pathname = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [read, setRead] = useState(false);
+  const [role, setRole] = useState<Role>(pathname.includes("/startup") ? "startup" : "investidor");
 
-    const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const stored = window.localStorage.getItem("matchup-role") as Role | null;
+    if (stored === "startup" || stored === "investidor") setRole(stored);
+  }, [pathname]);
 
-    const mode = pathname.includes("/startup")
-        ? "startup"
-        : "investidor";
+  const changeMode = (newRole: Role) => {
+    window.localStorage.setItem("matchup-role", newRole);
+    setRole(newRole);
+    setOpen(false);
+    router.push("/home/" + newRole);
+  };
 
-    const changeMode = (newMode: string) => {
-        setOpen(false);
+  return (
+    <header className="relative z-30 flex h-16 shrink-0 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-8">
+      <button type="button" onClick={() => router.push("/home/" + role)} className="text-xl font-black tracking-tight text-[#004ac6]">
+        MatchUp
+      </button>
 
-        if (newMode === "investidor") {
-            router.push("/home/investidor");
-        }
-
-        if (newMode === "startup") {
-            router.push("/home/startup");
-        }
-    };
-
-    return (
-        <div className="p-4 px-8 flex justify-between items-center border-b-2 border-gray-300">
-            <h1>Logo</h1>
-
-            <div className="flex gap-4 items-center">
-                <div className="relative">
-                    <button
-                        type="button"
-                        onClick={() => setOpen(!open)}
-                        className={`h-7 rounded-md text-sm font-bold px-2 flex items-center gap-2 ${
-                            mode === "investidor"
-                                ? "bg-[#D3E4FE] text-[#1D4ED8]"
-                                : "bg-[#EADDFF] text-[#5A189A]"
-                        }`}
-                    >
-                        <span
-                            className={`w-2 h-2 rounded-full ${
-                                mode === "investidor"
-                                    ? "bg-green-500"
-                                    : "bg-blue-500"
-                            }`}
-                        />
-
-                        {mode === "investidor"
-                            ? "Modo Investidor"
-                            : "Modo StartUp"}
-                    </button>
-
-                    {open && (
-                        <div className="absolute top-8 left-0 w-40 bg-white border border-gray-200 rounded-md shadow-md p-1 z-10">
-                            <button
-                                type="button"
-                                onClick={() => changeMode("investidor")}
-                                className="w-full flex items-center gap-2 px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
-                            >
-                                <span className="w-2 h-2 bg-green-500 rounded-full" />
-                                Modo Investidor
-                            </button>
-
-                            <button
-                                type="button"
-                                onClick={() => changeMode("startup")}
-                                className="w-full flex items-center gap-2 px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
-                            >
-                                <span className="w-2 h-2 bg-blue-500 rounded-full" />
-                                Modo StartUp
-                            </button>
-                        </div>
-                    )}
-                </div>
-
-                <button className="text-gray-500 hover:text-gray-700">
-                    <IoMdNotificationsOutline className="w-6 h-6" />
-                </button>
-
-                <Image
-                    src="/beatriz-ramos.png"
-                    alt="User Avatar"
-                    width={42}
-                    height={42}
-                    className="rounded-full border-2 border-blue-300"
-                />
+      <div className="flex items-center gap-3">
+        <div className="relative">
+          <button type="button" onClick={() => setOpen((value) => !value)} className="flex h-8 items-center gap-2 rounded-lg bg-slate-100 px-2.5 text-[11px] font-bold text-slate-700 transition hover:bg-slate-200">
+            <span className={"h-2 w-2 rounded-full " + (role === "investidor" ? "bg-emerald-500" : "bg-blue-500")} />
+            {role === "investidor" ? "Modo Investidor" : "Modo Startup"}
+            <ChevronDown size={13} />
+          </button>
+          {open && (
+            <div className="absolute right-0 top-10 w-44 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl">
+              <button type="button" onClick={() => changeMode("investidor")} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs hover:bg-slate-50"><span className="h-2 w-2 rounded-full bg-emerald-500" />Modo Investidor</button>
+              <button type="button" onClick={() => changeMode("startup")} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs hover:bg-slate-50"><span className="h-2 w-2 rounded-full bg-blue-500" />Modo Startup</button>
             </div>
+          )}
         </div>
-    );
+
+        <div className="relative">
+          <button type="button" onClick={() => setRead((value) => !value)} aria-label="Notificações" className="relative rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-800">
+            <IoMdNotificationsOutline className="h-6 w-6" />
+            {!read && <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />}
+          </button>
+          {read && (
+            <div className="absolute right-0 top-11 w-72 rounded-xl border border-slate-200 bg-white p-3 shadow-xl">
+              <div className="flex items-center justify-between"><p className="text-xs font-bold">Notificações</p><button onClick={() => setRead(false)} className="text-[9px] text-blue-600">Fechar</button></div>
+              <div className="mt-3 rounded-lg bg-blue-50 p-3 text-[10px] text-slate-600"><Bell size={13} className="mb-1 text-blue-600" />Você tem novos perfis compatíveis no Deal Flow.</div>
+              <div className="mt-2 flex items-center gap-2 text-[9px] text-emerald-700"><Check size={12} /> Dados mockados prontos para integração.</div>
+            </div>
+          )}
+        </div>
+
+        <div className="relative">
+          <button type="button" onClick={() => setProfileOpen((value) => !value)} aria-label="Abrir menu do perfil" className="rounded-full focus:outline-none focus:ring-2 focus:ring-blue-200">
+            <Image src="/beatriz-ramos.png" alt="Perfil" width={40} height={40} className="rounded-full border-2 border-blue-300" />
+          </button>
+          {profileOpen && (
+            <div className="absolute right-0 top-12 w-48 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl">
+              <button type="button" onClick={() => router.push("/onboarding/" + role)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs hover:bg-slate-50"><Settings2 size={14} />Editar perfil</button>
+              <button type="button" onClick={() => router.push("/login")} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs text-red-600 hover:bg-red-50"><LogOut size={14} />Sair</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
 }
