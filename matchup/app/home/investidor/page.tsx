@@ -1,6 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function Investidor() {
+    const router = useRouter();
     return (
         <div className="h-full w-full bg-white flex flex-col items-center relative overflow-hidden min-h-0">
 
@@ -84,7 +87,7 @@ export default function Investidor() {
                     </p>
 
                     {/* SETA */}
-                    <button className="absolute right-[clamp(120px,29%,173px)] bottom-[150px] w-8 h-8 rounded-full bg-white/20 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/30 transition">
+                    <button onClick={() => router.push("/home/investidor/detalhes")} className="absolute right-[clamp(120px,29%,173px)] bottom-[150px] w-8 h-8 rounded-full bg-white/20 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/30 transition">
                         ↑
                     </button>
 
