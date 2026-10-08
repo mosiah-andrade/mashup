@@ -57,14 +57,14 @@ export default function Page() {
         <div className="flex flex-col items-center gap-4">
           <div className="mt-6 flex gap-4">
             <a
-              href="#"
+              href="/onboarding/startup"
               className="flex items-center rounded-md bg-[#004AC6] px-6 py-3 text-sm font-blold text-white hover:bg-[#2563EB]"
             >
               <MdOutlineRocketLaunch className="mr-2" />
               Sou uma Startup
             </a>
             <a
-              href="#"
+              href="/onboarding/investidor"
               className="flex items-center rounded-md border border-[#004AC6] px-6 py-3 text-sm font-bold text-[#004AC6] hover:bg-[#EFF4FF]"
             >
               <IoPieChartOutline className="mr-2 text-purple-800" />
