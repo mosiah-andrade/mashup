@@ -1,47 +1,22 @@
+import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 
-export default function menuLandingPage(){
-    return (
-        <div className="bg-white min-h-14 flex items-center text-black px-6 gap-8">
-            <div className="font-bold text-xl">
-                Logo
-            </div>
-
-            <nav className="flex items-center gap-6">
-                <a href="#" className="hover:text-blue-600">
-                    Como Funciona
-                </a>
-
-                <a href="#" className="hover:text-blue-600">
-                    Para StartUps
-                </a>
-
-                <a href="#" className="hover:text-blue-600">
-                    Para Investidores
-                </a>
-
-                <a href="#" className="hover:text-blue-600">
-                    Matching Inteligente
-                </a>
-
-                <a href="#" className="hover:text-blue-600">
-                    Casos de Sucesso
-                </a>
-            </nav>
-            <div className="flex items-center gap-4 ml-auto">
-                <a href="/login" className=" hover:text-blue-800">
-                    Entrar
-                </a>
-                <a
-                    href="#"
-                    className="w-[126px] h-6 rounded-md bg-blue-600 text-sm font-medium text-white flex items-center justify-center hover:bg-blue-700"
-                >
-                    Criar Conta
-                </a>
-                <a href="" className="bg-blue-600 text-white h-[24px] w-[24px] rounded-full hover:bg-blue-700 flex items-center justify-center">
-                    <FaUser className="text-white text-sm" />
-                </a>
-            </div>
-        </div>
-    )
+export default function MenuLandingPage() {
+  return (
+    <header className="flex min-h-14 items-center gap-8 bg-white px-6 text-black">
+      <Link href="/" className="text-xl font-bold">MatchUp</Link>
+      <nav className="hidden items-center gap-6 md:flex">
+        <Link href="/onboarding" className="hover:text-blue-600">Como Funciona</Link>
+        <Link href="/onboarding/startup" className="hover:text-blue-600">Para Startups</Link>
+        <Link href="/onboarding/investidor" className="hover:text-blue-600">Para Investidores</Link>
+        <Link href="/onboarding" className="hover:text-blue-600">Matching Inteligente</Link>
+        <Link href="/onboarding" className="hover:text-blue-600">Casos de Sucesso</Link>
+      </nav>
+      <div className="ml-auto flex items-center gap-4">
+        <Link href="/login" className="hover:text-blue-800">Entrar</Link>
+        <Link href="/register" className="flex h-7 w-[126px] items-center justify-center rounded-md bg-blue-600 text-sm font-medium text-white hover:bg-blue-700">Criar Conta</Link>
+        <Link href="/login" aria-label="Acessar conta" className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700"><FaUser className="text-sm text-white" /></Link>
+      </div>
+    </header>
+  );
 }
