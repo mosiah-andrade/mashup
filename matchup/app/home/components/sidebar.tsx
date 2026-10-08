@@ -67,18 +67,18 @@ export default function Sidebar() {
             <button type="button" onClick={openMatches} className="text-[10px] font-medium text-blue-700">Ver todos</button>
           </div>
 
-          <div className="flex items-start gap-3 overflow-x-auto px-1 pb-1">
+          <div className="flex flex-wrap items-start gap-3 overflow-x-auto px-1 pb-1 max-h-[550px] ">
             {matchProfiles.slice(0, 3).map((profile) => (
-              <button key={profile!.id} type="button" onClick={() => router.push("/home/" + role + "/detalhes?profile=" + encodeURIComponent(profile!.id))} className="flex shrink-0 flex-col items-center gap-1">
+              <button key={profile!.id} type="button" onClick={() => router.push("/home/" + role + "/detalhes?profile=" + encodeURIComponent(profile!.id))} className="flex mt-4 flex-col items-center gap-1 ">
                 <div className="relative">
-                  <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-500 px-1.5 py-[2px] text-[7px] text-white">MATCH</span>
-                  <img src={profile!.image} alt={profile!.name} className="h-11 w-11 rounded-full border-2 border-white object-cover ring-2 ring-emerald-400" />
+                  <span className="absolute -top-[14px] left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-500 px-1.5 py-[2px] text-[7px] text-white">MATCH</span>
+                  <img src={profile!.image} alt={profile!.name} className="h-11 w-11 min-w-11 rounded-full border-2 border-white object-cover ring-2 ring-emerald-400" />
                 </div>
                 <span className="max-w-16 truncate text-[9px] text-slate-700">{profile!.name}</span>
               </button>
             ))}
             <button type="button" onClick={openMatches} className="flex shrink-0 flex-col items-center gap-1">
-              <div className="grid h-11 w-11 place-items-center rounded-full border border-dashed border-blue-300 text-blue-600"><Plus size={15} /></div>
+              <div className="grid h-11 w-11 mt-4 place-items-center rounded-full border border-dashed border-blue-300 text-blue-600"><Plus size={15} /></div>
               <span className="text-[9px] text-slate-500">Descobrir</span>
             </button>
           </div>

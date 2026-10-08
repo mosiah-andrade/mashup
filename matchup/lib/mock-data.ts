@@ -2,7 +2,7 @@ import type { ChatMessage, DealProfile, MockConversation } from "./types";
 
 export const mockProfiles: DealProfile[] = [
   {
-    id: "finflow", kind: "startup", name: "FinFlow", image: "/images/finflow.jpg", verified: true, matchScore: 94,
+    id: "finflow", kind: "startup", name: "FinFlow", image: "/finflow.jpg", verified: true, matchScore: 94,
     headline: "Infraestrutura financeira B2B com IA", location: "São Paulo, SP", stage: "Seed", vertical: "FinTech • B2B SaaS",
     description: "Automatizando conciliação financeira em tempo real para PMEs e fintechs na América Latina com agentes de IA.",
     tags: ["IA Bancária", "CVM 88", "+18% MoM"],
@@ -15,7 +15,7 @@ export const mockProfiles: DealProfile[] = [
     },
   },
   {
-    id: "biomassa", kind: "startup", name: "BioMassa Tech", image: "/images/biomassa.jpg", verified: true, matchScore: 91,
+    id: "biomassa", kind: "startup", name: "BioMassa Tech", image: "/biomass.avif", verified: true, matchScore: 91,
     headline: "Agtech para inteligência de biomassa", location: "Campinas, SP", stage: "Seed", vertical: "Agtech • Climate",
     description: "Plataforma de dados e otimização para produtores e compradores de biomassa.",
     tags: ["Agtech", "Climate", "B2B"],
@@ -27,7 +27,7 @@ export const mockProfiles: DealProfile[] = [
     },
   },
   {
-    id: "pixcanga", kind: "startup", name: "PixCanga", image: "/images/finflow.jpg", verified: false, matchScore: 87,
+    id: "pixcanga", kind: "startup", name: "PixCanga", image: "/pixcanga.jpg", verified: false, matchScore: 87,
     headline: "Pagamentos B2B para cadeias regionais", location: "Recife, PE", stage: "Pré-Seed", vertical: "FinTech • Payments",
     description: "Infraestrutura de pagamentos e conciliação para negócios regionais.",
     tags: ["Payments", "B2B", "Nordeste"],
@@ -39,7 +39,7 @@ export const mockProfiles: DealProfile[] = [
     },
   },
   {
-    id: "carlos", kind: "investidor", name: "Carlos Mendes", image: "/images/carlos.jpg", verified: true, matchScore: 94,
+    id: "carlos", kind: "investidor", name: "Carlos Mendes", image: "/carlosmendes.webp", verified: true, matchScore: 94,
     headline: "Investidor Anjo & Lead Syndicate", location: "São Paulo, SP", stage: "Seed • Série A", vertical: "B2B SaaS • FinTech • IA",
     description: "Buscando startups B2B com produto validado onde posso abrir portas no setor financeiro tradicional.",
     tags: ["Enterprise Sales", "Governança", "Series A Prep"],
@@ -52,7 +52,7 @@ export const mockProfiles: DealProfile[] = [
     },
   },
   {
-    id: "camila", kind: "investidor", name: "Camila Silveira", image: "/beatriz-ramos.png", verified: true, matchScore: 98,
+    id: "camila", kind: "investidor", name: "Camila Silveira", image: "/camila.jpg", verified: true, matchScore: 98,
     headline: "Investidora Anjo • SP Angel Syndicate", location: "São Paulo, SP", stage: "Pré-Seed • Seed", vertical: "FinTech • IA • B2B SaaS",
     description: "Investidora com experiência em automação de backoffice financeiro e conexão com instituições.",
     tags: ["CVM 88", "Smart Money", "Banking"],
@@ -65,7 +65,7 @@ export const mockProfiles: DealProfile[] = [
     },
   },
   {
-    id: "alpha", kind: "investidor", name: "Alpha Ventures", image: "/images/carlos.jpg", verified: true, matchScore: 89,
+    id: "alpha", kind: "investidor", name: "Alpha Ventures", image: "/alpha.jpg", verified: true, matchScore: 89,
     headline: "Micro-VC focado em tecnologia B2B", location: "Rio de Janeiro, RJ", stage: "Seed • Série A", vertical: "SaaS • IA • Climate",
     description: "Fundo seed com atuação próxima aos founders e foco em crescimento previsível.",
     tags: ["Micro-VC", "B2B", "Growth"],

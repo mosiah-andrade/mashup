@@ -36,7 +36,7 @@ export default function MatchResult({ role }: { role: Role }) {
             </div>
 
             <div className="mt-6 grid grid-cols-1 items-center gap-3 md:grid-cols-[1fr_auto_1fr]">
-              <ProfileCard name="Você • FinFlow" image="/images/finflow.jpg" detail="Startup • Seed • FinTech" />
+              <ProfileCard name="Você • FinFlow" image="/beatriz-ramos.png" detail="Startup • Seed • FinTech" />
               <div className="mx-auto flex flex-col items-center gap-1"><div className="grid h-10 w-10 place-items-center rounded-full bg-indigo-600 text-white shadow-lg sm:h-12 sm:w-12"><Check size={20} strokeWidth={3} /></div><span className="text-center text-[7px] font-bold uppercase leading-3 text-indigo-600">MatchUp<br />Confirmado</span></div>
               <ProfileCard name={profile.name} image={profile.image} detail={profile.headline} match={profile.matchScore + "% Match"} />
             </div>
