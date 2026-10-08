@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronRight, Heart, RotateCcw, Star, X } from "lucide-react";
 import type { Role } from "../../../lib/types";
@@ -216,7 +216,7 @@ function ActionButton({
 }: {
   label: string;
   onClick: () => void;
-  icon: React.ReactNode;
+  icon: ReactNode;
   danger?: boolean;
   favorite?: boolean;
 }) {
