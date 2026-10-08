@@ -2,10 +2,10 @@
 
 export default function Investidor() {
     return (
-        <div className="h-full w-full bg-white flex flex-col items-center relative overflow-hidden">
+        <div className="h-full w-full bg-white flex flex-col items-center relative overflow-hidden min-h-0">
 
             {/* ================= CARD ================= */}
-            <div className="mt-[58px] w-[508px] h-[470px] rounded-[20px] overflow-hidden relative shadow-[0_20px_40px_rgba(0,0,0,0.18)]">
+            <div className="mt-[clamp(28px,6vh,68px)] w-[min(600px,calc(100vw-380px))] h-[clamp(470px,70vh,555px)] rounded-[20px] overflow-hidden relative shadow-[0_20px_40px_rgba(0,0,0,0.18)]">
 
                 {/* IMAGEM DE FUNDO */}
                 <img
@@ -84,7 +84,7 @@ export default function Investidor() {
                     </p>
 
                     {/* SETA */}
-                    <button className="absolute right-[173px] bottom-[150px] w-8 h-8 rounded-full bg-white/20 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/30 transition">
+                    <button className="absolute right-[clamp(120px,29%,173px)] bottom-[150px] w-8 h-8 rounded-full bg-white/20 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/30 transition">
                         ↑
                     </button>
 
@@ -135,7 +135,7 @@ export default function Investidor() {
 
             {/* ================= BOTÕES ================= */}
 
-            <div className="flex items-center gap-4 mt-5">
+            <div className="flex items-center gap-4 mt-[clamp(12px,2.5vh,24px)] shrink-0">
 
                 {/* PASSAR */}
                 <button
@@ -220,11 +220,11 @@ export default function Investidor() {
 
             {/* ================= ATALHOS ================= */}
 
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 max-w-[calc(100%-32px)]">
 
                 <div className="
                     h-7
-                    px-4
+                    px-4 whitespace-nowrap
                     rounded-full
                     bg-[#273246]
                     shadow-lg
