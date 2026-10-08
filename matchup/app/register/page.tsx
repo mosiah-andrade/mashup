@@ -1,134 +1,56 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { startMockSession } from "../../lib/mock-auth";
 
-
-export default function login() {
+export default function RegisterPage() {
   const router = useRouter();
-  const user = {
-    email: 'admin@senac.edu',
-    password: 'admin'
-  };
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleCadatro = (e: React.FormEvent) => {
-    e.preventDefault();
-router.push('/onboarding')
-  };
+  const handleRegister = (event: FormEvent) => {
+    event.preventDefault();
+    setError("");
 
+    if (!email.includes("@")) return setError("Informe um e-mail válido.");
+    if (email.trim().toLowerCase() !== confirmEmail.trim().toLowerCase()) return setError("Os e-mails não conferem.");
+    if (password.length < 6) return setError("A senha deve ter pelo menos 6 caracteres.");
+    if (password !== confirmPassword) return setError("As senhas não conferem.");
+
+    startMockSession(email.trim().toLowerCase());
+    router.push("/onboarding");
+  };
 
   return (
-    <div className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center bg-blue-950  p-4 overflow-hidden">
-      
-      
-      <main className="flex flex-1 w-full max-w-xl flex-col bg-gray-200 rounded-lg items-center justify-center py-12 px-6 lg:px-16 sm:items-start">
-        <div className='flex flex-col m-auto'>
-          <Image
-            src="https://tse3.mm.bing.net/th/id/OIP.qQJSBsXTGL_EDB97awxL_wHaEc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-            alt="Logo Perscrutar"
-            width={300}
-            height={128}
-            className="h-32 w-auto object-contain"
-            unoptimized
-          />
-          
-          <p className="mt-4 text-1xl text-center w-full border-black-10">
-            Match Up
-          </p>
-        </div>
-        
-        
-        <form onSubmit={handleCadatro} className="mt-8 w-full max-w-md">
-          <h2 className="pb-5 font-bold">
-            Registrar
-          </h2>
-          <div className="flex flex-col gap-4">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="E-mail"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="email"
-              id="confirmar_email"
-              name="confirmar_email"
-              value={email}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="Confirme seu email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="Senha"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              type="password"
-              id="confirm_password"
-              name="confirm_password"
-              value={password}
-              className="rounded-[8.066px] bg-white border border-gray-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-800 text-gray-600 w-full"
-              placeholder="Confirme sua senha"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          
-          <div className="flex items-center mt-4">
-            <input type="checkbox" name="remember" id="remember" className="mr-2 h-4 w-4" />
-            <label htmlFor="remember" className="text-lg font-medium select-none">
-              Manter-me conectado
-            </label>
-          </div>
-          
-          <button
-            type="submit"
-            className="rounded-[8.066px] bg-blue-950 text-white hover:bg-blue-800 font-bold py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mt-6 cursor-pointer transition-colors button" 
-          >
-            Cadastrar
-          </button>
+    <main className="min-h-screen bg-slate-950 px-4 py-8">
+      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl items-center justify-center">
+        <section className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+          <button type="button" onClick={() => router.push("/")} className="text-xl font-black text-blue-700">MatchUp</button>
+          <p className="mt-8 text-xs font-bold uppercase tracking-widest text-blue-600">Primeiro acesso</p>
+          <h1 className="mt-2 text-3xl font-bold text-slate-900">Criar conta</h1>
+          <p className="mt-2 text-sm text-slate-500">Depois do cadastro, você escolhe se participa como Startup ou Investidor.</p>
 
-          <a 
-            href="/" 
-            className=" rounded-[8.066px] bg-blue-950 text-white hover:bg-blue-800 font-bold py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full mt-6 cursor-pointer transition-colors button">
-          Voltar
-          </a>
+          <form onSubmit={handleRegister} className="mt-7 space-y-4">
+            <Field label="E-mail" type="email" value={email} onChange={setEmail} placeholder="voce@empresa.com" />
+            <Field label="Confirmar e-mail" type="email" value={confirmEmail} onChange={setConfirmEmail} placeholder="Repita seu e-mail" />
+            <Field label="Senha" type="password" value={password} onChange={setPassword} placeholder="Mínimo de 6 caracteres" />
+            <Field label="Confirmar senha" type="password" value={confirmPassword} onChange={setConfirmPassword} placeholder="Repita sua senha" />
 
-        </form>
-      </main> 
+            {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-xs font-medium text-red-700">{error}</p>}
 
-      {/* <aside className="flex items-center justify-center p-4"> 
-        <Image
-          src={Icon}
-          alt="Ícone decorativo"
-          placeholder="blur"
-          className="object-cover max-w-[80vw] lg:max-w-[40vw] h-auto"
-          unoptimized
-        />
-      </aside> */}
-      
-      
-      <aside className="flex flex-1 items-center justify-center p-4 w-full h-full lg:max-w-[50vw]"> 
-        {/* <Image
-          src="/octops4.png" // Caminho direto para a pasta public
-          alt="Animacao do Tentaculo"
-          width={500}          // Defina uma largura base aproximada
-          height={500}         // Defina uma altura base aproximada
-          className="w-full max-w-[80vw] lg:max-w-[45vw] h-auto object-contain"
-          unoptimized          // CRÍTICO: Sem isso, o Next.js pode travar a animação do GIF
-        /> */}
-      </aside>
-
-    </div>
+            <button type="submit" className="w-full rounded-xl bg-blue-700 py-3 text-sm font-bold text-white transition hover:bg-blue-800">Continuar cadastro</button>
+            <button type="button" onClick={() => router.push("/login")} className="w-full rounded-xl border border-slate-300 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50">Já tenho uma conta</button>
+          </form>
+        </section>
+      </div>
+    </main>
   );
+}
+
+function Field({ label, type, value, onChange, placeholder }: { label: string; type: string; value: string; onChange: (value: string) => void; placeholder: string }) {
+  return <label className="block"><span className="mb-1 block text-xs font-semibold text-slate-700">{label}</span><input type={type} value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100" /></label>;
 }
