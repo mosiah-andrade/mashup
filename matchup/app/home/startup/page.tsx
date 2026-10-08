@@ -1,6 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function StartupPage() {
+    const router = useRouter();
+
     return (
         <div className="h-full w-full bg-white flex flex-col items-center relative overflow-hidden">
 
@@ -84,7 +88,7 @@ export default function StartupPage() {
                     </p>
 
                     {/* SETA */}
-                    <button className="absolute right-[173px] bottom-[150px] w-8 h-8 rounded-full bg-white/20 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/30 transition">
+                    <button onClick={() => router.push("/home/startup/detalhes")} className="absolute right-[173px] bottom-[150px] w-8 h-8 rounded-full bg-white/20 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/30 transition">
                         ↑
                     </button>
 
@@ -187,6 +191,7 @@ export default function StartupPage() {
 
                 {/* MATCH */}
                 <button
+                    onClick={() => router.push("/home/startup/match")}
                     className="
                         w-12 h-12 rounded-full
                         bg-emerald-400

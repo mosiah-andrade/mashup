@@ -16,7 +16,11 @@ export default function login() {
 
   const handleCadatro = (e: React.FormEvent) => {
     e.preventDefault();
+<<<<<<< HEAD
     router.push('/home/investidor')
+=======
+    router.push('/onboarding')
+>>>>>>> refs/remotes/origin/main
   };
 
 
