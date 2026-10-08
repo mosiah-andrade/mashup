@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState, type ChangeEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { CalendarDays, FileText, MoreVertical, Paperclip, Search, Send, ShieldCheck, Smile, X } from "lucide-react";
 import { appendMockMessage, getMockMessages } from "../../../lib/mock-store";
@@ -55,7 +55,7 @@ function MensagensContent() {
     setScheduleOpen(false);
   };
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
     send("📎 " + file.name + " (" + Math.ceil(file.size / 1024 / 1024) + " MB)", "file");
