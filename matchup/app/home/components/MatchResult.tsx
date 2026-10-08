@@ -10,8 +10,9 @@ import type { Role } from "../../../lib/types";
 export default function MatchResult({ role }: { role: Role }) {
   const router = useRouter();
   const params = useSearchParams();
-  const fallback = getProfilesForRole(role)[0];
-  const profile = getProfile(params.get("profile")) ?? fallback;
+  const candidates = getProfilesForRole(role);
+  const fallback = candidates[0];
+  const profile = candidates.find((item) => item.id === params.get("profile")) ?? fallback;
 
   useEffect(() => {
     if (profile) createMockMatch(profile.id);
