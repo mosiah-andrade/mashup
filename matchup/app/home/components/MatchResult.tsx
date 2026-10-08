@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Check, Eye, MessageSquare, Sparkles } from "lucide-react";
 import { createMockMatch } from "../../../lib/mock-store";
@@ -13,7 +13,7 @@ export default function MatchResult({ role }: { role: Role }) {
   const fallback = getProfilesForRole(role)[0];
   const profile = getProfile(params.get("profile")) ?? fallback;
 
-  useMemo(() => {
+  useEffect(() => {
     if (profile) createMockMatch(profile.id);
   }, [profile]);
 
@@ -35,7 +35,7 @@ export default function MatchResult({ role }: { role: Role }) {
             </div>
 
             <div className="mt-6 grid grid-cols-1 items-center gap-3 md:grid-cols-[1fr_auto_1fr]">
-              <ProfileCard name={role === "investidor" ? "Você • Startup" : "Você • Startup"} image="/images/finflow.jpg" detail={role === "investidor" ? "FinFlow • Seed" : "Seu perfil de startup"} />
+              <ProfileCard name="Você • FinFlow" image="/images/finflow.jpg" detail="Startup • Seed • FinTech" />
               <div className="mx-auto flex flex-col items-center gap-1"><div className="grid h-10 w-10 place-items-center rounded-full bg-indigo-600 text-white shadow-lg sm:h-12 sm:w-12"><Check size={20} strokeWidth={3} /></div><span className="text-center text-[7px] font-bold uppercase leading-3 text-indigo-600">MatchUp<br />Confirmado</span></div>
               <ProfileCard name={profile.name} image={profile.image} detail={profile.headline} match={profile.matchScore + "% Match"} />
             </div>
