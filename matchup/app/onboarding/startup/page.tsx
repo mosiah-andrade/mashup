@@ -8,7 +8,7 @@ export default function StartupOnboarding() {
   const { step, setStep, data, setData } = useOnboarding("startup");
   const update = (key: string, value: string | boolean) => setData({ ...data, [key]: value });
 
-  if (step === 0) return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData}>
+  if (step === 0) return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/startup")}>
     <Section number="1" title="Identificação Básica & Posicionamento">
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Nome da Startup" value={String(data.name || "")} onChange={v => update("name", v)} placeholder="FinFlow Inteligência Financeira" />
@@ -36,7 +36,7 @@ export default function StartupOnboarding() {
     </Section>
   </OnboardingShell>;
 
-  if (step === 1) return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData}>
+  if (step === 1) return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/startup")}>
     <Section number="3" title="Rodada de Investimento & Termos">
       <div className="grid gap-4 sm:grid-cols-3">
         <Field label="Meta de Captação" value={String(data.amount || "")} onChange={v => update("amount", v)} placeholder="R$ 1.500.000" />
@@ -57,7 +57,7 @@ export default function StartupOnboarding() {
     </Section>
   </OnboardingShell>;
 
-  if (step === 2) return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData}>
+  if (step === 2) return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/startup")}>
     <Section number="6" title="Governança & Termos">
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Tipo Societário" value={String(data.companyType || "")} onChange={v => update("companyType", v)} placeholder="LTDA / S.A." />
@@ -73,7 +73,7 @@ export default function StartupOnboarding() {
     </Section>
   </OnboardingShell>;
 
-  return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData}>
+  return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/startup")}>
     <Section number="8" title="Auditoria Final & Data Room">
       <div className="rounded-xl bg-emerald-50 p-4 text-xs text-emerald-800">
         <p className="font-bold">✓ Perfil pronto para revisão</p>
