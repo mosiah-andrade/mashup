@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   ArrowLeft,
@@ -102,7 +102,7 @@ const messages: Record<PersonId, { from: "them" | "me"; text: string; time: stri
   ],
 };
 
-export default function MensagensPage() {
+function MensagensContent() {
   const params = useSearchParams();
   const requested = params.get("user") as PersonId | null;
   const selectedId: PersonId = requested && requested in people ? requested : "camila";
@@ -245,5 +245,14 @@ export default function MensagensPage() {
         </div>
       </footer>
     </section>
+  );
+}
+
+
+export default function MensagensPage() {
+  return (
+    <Suspense fallback={<div className="h-full bg-[#f8faff] flex items-center justify-center text-sm text-slate-400">Carregando mensagens...</div>}>
+      <MensagensContent />
+    </Suspense>
   );
 }
