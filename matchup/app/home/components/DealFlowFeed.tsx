@@ -79,7 +79,7 @@ export default function DealFlowFeed({ role }: { role: Role }) {
     return (
       <div className="flex h-full min-h-[620px] w-full items-center justify-center bg-white px-6">
         <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-          <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-blue-50 text-blue-600">
+          <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[var(--bege-2)] text-[var(--vermelho-2)]">
             <Heart size={24} />
           </div>
           <h1 className="mt-4 text-xl font-bold text-slate-900">Você chegou ao fim do Deal Flow</h1>
@@ -93,7 +93,7 @@ export default function DealFlowFeed({ role }: { role: Role }) {
               setPassed([]);
               setCurrentIndex(0);
             }}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[var(--vermelho-2)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--vermelho-1)]"
           >
             <RotateCcw size={15} /> Recomeçar
           </button>
@@ -103,13 +103,11 @@ export default function DealFlowFeed({ role }: { role: Role }) {
   }
 
   const isFavorite = favorites.includes(profile.id);
-  const accent = role === "investidor" ? "emerald" : "violet";
-
   return (
     <div className="relative flex h-full min-h-[620px] w-full flex-col items-center overflow-hidden bg-white px-4">
       <div className="mt-[clamp(20px,5vh,58px)] w-full max-w-[600px]">
         <div className="mb-3 flex items-center justify-between gap-2">
-          <span className="rounded-full bg-emerald-500 px-3 py-1 text-[10px] font-semibold text-white shadow-sm">
+          <span className="rounded-full bg-[var(--vermelho-2)] px-3 py-1 text-[10px] font-semibold text-white shadow-sm">
             ⚡ {profile.matchScore}% Sinergia de Tese
           </span>
           <span className="rounded-full bg-slate-900/90 px-3 py-1 text-[10px] text-white">
@@ -129,7 +127,7 @@ export default function DealFlowFeed({ role }: { role: Role }) {
 
           <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
             <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-emerald-500/90 px-2 py-1 text-[9px] font-medium text-white">
+              <span className="rounded-full bg-[var(--vermelho-2)]/90 px-2 py-1 text-[9px] font-medium text-white">
                 ● Perfil verificado
               </span>
               <span className="text-[9px] text-white/85">● Ativo no Deal Flow</span>
@@ -137,7 +135,7 @@ export default function DealFlowFeed({ role }: { role: Role }) {
 
             <div className="flex items-center gap-2">
               <h1 className="text-[25px] font-bold text-white">{profile.name}</h1>
-              {profile.verified && <span className="text-blue-300">✦</span>}
+              {profile.verified && <span className="text-[var(--bege-1)]">✦</span>}
             </div>
             <p className="mt-1 text-[10px] text-white/75">{profile.headline}</p>
             <p className="mt-1 text-[9px] text-white/65">
@@ -149,8 +147,8 @@ export default function DealFlowFeed({ role }: { role: Role }) {
                 <div key={metric.label} className="rounded-xl border border-white/10 bg-black/60 px-3 py-2 backdrop-blur-md">
                   <p className="text-[8px] uppercase tracking-wide text-white/55">{metric.label}</p>
                   <p className={"mt-1 text-[12px] font-semibold " + (
-                    metric.accent === "green" ? "text-emerald-400" :
-                    metric.accent === "purple" ? "text-violet-300" : "text-white"
+                    metric.accent === "green" ? "text-[var(--bege-1)]" :
+                    metric.accent === "purple" ? "text-[var(--vermelho-3)]" : "text-white"
                   )}>
                     {metric.value}
                   </p>
@@ -189,14 +187,14 @@ export default function DealFlowFeed({ role }: { role: Role }) {
           onClick={match}
           aria-label="Dar match"
           title="Dar match"
-          className="grid h-12 w-12 place-items-center rounded-full bg-emerald-400 text-white shadow-[0_8px_20px_rgba(16,185,129,0.35)] transition hover:scale-110 hover:bg-emerald-500"
+          className="grid h-12 w-12 place-items-center rounded-full bg-[var(--vermelho-2)] text-white shadow-[0_8px_20px_rgba(163,41,29,0.25)] transition hover:scale-110 hover:bg-[var(--vermelho-1)]"
         >
           <Heart size={22} fill="currentColor" />
         </button>
         <ActionButton label="Detalhes" onClick={openDetails} icon={<ChevronRight size={18} />} />
       </div>
 
-      <div className="mt-4 flex flex-wrap justify-center gap-3 rounded-full bg-[#273246] px-4 py-2 text-[8px] text-white shadow-lg">
+      <div className="mt-4 flex flex-wrap justify-center gap-3 rounded-full bg-slate-800 px-4 py-2 text-[8px] text-white shadow-lg">
         <span className="font-semibold">ATALHOS</span>
         <span>← Passar</span>
         <span>→ Match</span>
@@ -227,8 +225,8 @@ function ActionButton({
       aria-label={label}
       title={label}
       className={"grid h-11 w-11 place-items-center rounded-full border bg-white shadow-md transition hover:scale-110 " + (
-        danger ? "border-red-100 text-red-500" :
-        favorite ? "border-violet-200 text-violet-600" :
+        danger ? "border-[var(--bege-3)] text-[var(--vermelho-2)]" :
+        favorite ? "border-[var(--bege-3)] text-[var(--vermelho-1)]" :
         "border-slate-200 text-slate-600"
       )}
     >

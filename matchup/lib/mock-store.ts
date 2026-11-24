@@ -1,7 +1,7 @@
 import type { ChatMessage, MockMatch, MockStoreState } from "./types";
 import { initialMessages } from "./mock-data";
 
-const STORAGE_KEY = "matchup-mock-store-v1";
+const STORAGE_KEY = "ENLA-mock-store-v1";
 
 function cloneInitialState(): MockStoreState {
   return {

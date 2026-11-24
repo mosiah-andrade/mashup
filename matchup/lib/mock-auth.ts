@@ -4,7 +4,7 @@ export interface MockSession {
   createdAt: string;
 }
 
-const SESSION_KEY = "matchup-mock-session";
+const SESSION_KEY = "ENLA-mock-session";
 
 export function getMockSession(): MockSession | null {
   if (typeof window === "undefined") return null;

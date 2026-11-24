@@ -41,13 +41,13 @@ export default function Sidebar() {
   return (
     <aside className="flex h-full w-[270px] shrink-0 flex-col border-r border-slate-200 bg-white">
       <div className="px-2 pt-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-3 shadow-sm">
           <div className="mb-3 flex items-center justify-between px-1">
-            <button type="button" onClick={openMatches} title="Matches" className="grid h-8 w-8 place-items-center rounded-lg bg-blue-50 text-blue-700"><Heart size={17} fill="currentColor" /></button>
-            <button type="button" onClick={() => toggleTool("filter")} title="Filtros" className="text-slate-600 hover:text-blue-600"><SlidersHorizontal size={17} /></button>
-            <button type="button" onClick={() => toggleTool("smart")} title="Smart Money" className="text-slate-600 hover:text-blue-600"><Zap size={17} /></button>
-            <button type="button" onClick={() => toggleTool("security")} title="Segurança" className="text-slate-600 hover:text-blue-600"><Shield size={17} /></button>
-            <button type="button" onClick={() => router.push("/onboarding/" + role)} title="Configurações" className="text-slate-600 hover:text-blue-600"><Settings size={17} /></button>
+            <button type="button" onClick={openMatches} title="Matches" className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--bege-2)] text-[var(--vermelho-2)]"><Heart size={17} fill="currentColor" /></button>
+            <button type="button" onClick={() => toggleTool("filter")} title="Filtros" className="text-slate-600 hover:text-[var(--vermelho-1)]"><SlidersHorizontal size={17} /></button>
+            <button type="button" onClick={() => toggleTool("smart")} title="Smart Money" className="text-slate-600 hover:text-[var(--vermelho-1)]"><Zap size={17} /></button>
+            <button type="button" onClick={() => toggleTool("security")} title="Segurança" className="text-slate-600 hover:text-[var(--vermelho-1)]"><Shield size={17} /></button>
+            <button type="button" onClick={() => router.push("/onboarding/" + role)} title="Configurações" className="text-slate-600 hover:text-[var(--vermelho-1)]"><Settings size={17} /></button>
           </div>
 
           {tool && (
@@ -57,28 +57,28 @@ export default function Sidebar() {
             </div>
           )}
 
-          <div className="mb-4 flex h-10 items-center rounded-xl border border-blue-100 bg-blue-50 p-1">
-            <button type="button" onClick={openMatches} className={"h-full flex-1 rounded-lg text-[12px] font-medium " + (!isMessages ? "bg-white shadow-sm text-slate-700" : "text-slate-600")}>Matches <span className="ml-1 inline-grid h-4 w-4 place-items-center rounded-full bg-blue-100 text-[9px] font-bold text-blue-700">{matches.length}</span></button>
-            <button type="button" onClick={() => openMessages()} className={"h-full flex-1 rounded-lg text-[12px] font-medium " + (isMessages ? "bg-white shadow-sm text-slate-700" : "text-slate-600")}>Mensagens <span className="ml-1 inline-grid h-4 w-4 place-items-center rounded-full bg-blue-100 text-[9px] font-bold text-blue-700">{conversations.filter((item) => item.unread).length}</span></button>
+          <div className="mb-4 flex h-10 items-center rounded-xl border border-slate-100 bg-slate-50 p-1">
+            <button type="button" onClick={openMatches} className={"h-full flex-1 rounded-lg text-[12px] font-medium " + (!isMessages ? "bg-white shadow-sm text-[var(--vermelho-2)]" : "text-slate-600")}>Matches <span className="ml-1 inline-grid h-4 w-4 place-items-center rounded-full bg-[var(--bege-2)] text-[9px] font-bold text-[var(--vermelho-2)]">{matches.length}</span></button>
+            <button type="button" onClick={() => openMessages()} className={"h-full flex-1 rounded-lg text-[12px] font-medium " + (isMessages ? "bg-white shadow-sm text-[var(--vermelho-2)]" : "text-slate-600")}>Mensagens <span className="ml-1 inline-grid h-4 w-4 place-items-center rounded-full bg-[var(--bege-2)] text-[9px] font-bold text-[var(--vermelho-2)]">{conversations.filter((item) => item.unread).length}</span></button>
           </div>
 
           <div className="mb-3 flex items-center justify-between px-1">
             <span className="text-[10px] font-semibold uppercase text-slate-600">Novas conexões</span>
-            <button type="button" onClick={openMatches} className="text-[10px] font-medium text-blue-700">Ver todos</button>
+            <button type="button" onClick={openMatches} className="text-[10px] font-medium text-[var(--vermelho-1)]">Ver todos</button>
           </div>
 
           <div className="flex flex-wrap items-start gap-3 overflow-x-auto px-1 pb-1 max-h-[550px] ">
             {matchProfiles.slice(0, 3).map((profile) => (
               <button key={profile!.id} type="button" onClick={() => router.push("/home/" + role + "/detalhes?profile=" + encodeURIComponent(profile!.id))} className="flex mt-4 flex-col items-center gap-1 ">
                 <div className="relative">
-                  <span className="absolute -top-[14px] left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-500 px-1.5 py-[2px] text-[7px] text-white">MATCH</span>
-                  <img src={profile!.image} alt={profile!.name} className="h-11 w-11 min-w-11 rounded-full border-2 border-white object-cover ring-2 ring-emerald-400" />
+                  <span className="absolute -top-[14px] left-1/2 z-10 -translate-x-1/2 rounded-full bg-[var(--vermelho-1)] px-1.5 py-[2px] text-[7px] text-white">MATCH</span>
+                  <img src={profile!.image} alt={profile!.name} className="h-11 w-11 min-w-11 rounded-full border-2 border-white object-cover ring-2 ring-[var(--vermelho-1)]" />
                 </div>
                 <span className="max-w-16 truncate text-[9px] text-slate-700">{profile!.name}</span>
               </button>
             ))}
             <button type="button" onClick={openMatches} className="flex shrink-0 flex-col items-center gap-1">
-              <div className="grid h-11 w-11 mt-4 place-items-center rounded-full border border-dashed border-blue-300 text-blue-600"><Plus size={15} /></div>
+              <div className="grid h-11 w-11 mt-4 place-items-center rounded-full border border-dashed border-[var(--vermelho-1)]/50 text-[var(--vermelho-1)]"><Plus size={15} /></div>
               <span className="text-[9px] text-slate-500">Descobrir</span>
             </button>
           </div>
@@ -93,14 +93,14 @@ export default function Sidebar() {
           </label>
           <div className="mt-2 overflow-auto">
             {conversations.map((conversation) => (
-              <button key={conversation.id} type="button" onClick={() => openMessages(conversation.profileId)} className={"flex w-full items-center gap-2 border-b border-slate-100 px-2 py-2.5 text-left transition " + (selectedId === conversation.profileId ? "border-l-[3px] border-l-blue-600 bg-blue-50" : "hover:bg-slate-50")}>
+              <button key={conversation.id} type="button" onClick={() => openMessages(conversation.profileId)} className={"flex w-full items-center gap-2 border-b border-slate-100 px-2 py-2.5 text-left transition " + (selectedId === conversation.profileId ? "border-l-[3px] border-l-[var(--vermelho-2)] bg-[var(--bege-2)]" : "hover:bg-slate-50")}>
                 <img src={conversation.profile!.image} alt={conversation.profile!.name} className="h-9 w-9 shrink-0 rounded-full object-cover" />
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-2"><p className="truncate text-[11px] font-semibold text-slate-800">{conversation.profile!.name}</p><span className="shrink-0 text-[8px] text-blue-600">{conversation.time}</span></div>
+                  <div className="flex items-center justify-between gap-2"><p className="truncate text-[11px] font-semibold text-slate-800">{conversation.profile!.name}</p><span className="shrink-0 text-[8px] text-[var(--vermelho-1)]">{conversation.time}</span></div>
                   <p className="truncate text-[9px] text-slate-400">{conversation.profile!.headline}</p>
                   <p className="mt-0.5 truncate text-[9px] text-slate-500">{conversation.lastMessage}</p>
                 </div>
-                {conversation.unread && <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />}
+                {conversation.unread && <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--vermelho-1)]" />}
               </button>
             ))}
           </div>
@@ -108,10 +108,10 @@ export default function Sidebar() {
       )}
 
       <div className="mt-auto px-2 pb-2 pt-2">
-        <div className="flex h-12 items-center rounded-xl bg-blue-50 px-2">
+        <div className="flex h-12 items-center rounded-xl bg-slate-50 px-2">
           <img src="/beatriz-ramos.png" alt="Perfil atual" className="h-8 w-8 rounded-full object-cover" />
-          <div className="ml-2 min-w-0 flex-1"><p className="truncate text-[11px] font-semibold text-slate-800">Meu Perfil</p><p className="truncate text-[9px] text-blue-700">{role === "investidor" ? "Investidor" : "Startup"}</p></div>
-          <button type="button" title="Sair" onClick={() => router.push("/login")} className="text-slate-500 hover:text-red-600"><LogOut size={15} /></button>
+          <div className="ml-2 min-w-0 flex-1"><p className="truncate text-[11px] font-semibold text-slate-800">Meu Perfil</p><p className="truncate text-[9px] text-[var(--vermelho-1)]">{role === "investidor" ? "Investidor" : "Startup"}</p></div>
+          <button type="button" title="Sair" onClick={() => router.push("/login")} className="text-slate-500 hover:text-[var(--vermelho-1)]"><LogOut size={15} /></button>
         </div>
       </div>
     </aside>

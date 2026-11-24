@@ -75,14 +75,14 @@ export default function StartupOnboarding() {
 
   return <OnboardingShell role="startup" step={step} setStep={setStep} data={data} setData={setData} onComplete={() => router.push("/home/startup")}>
     <Section number="8" title="Auditoria Final & Data Room">
-      <div className="rounded-xl bg-emerald-50 p-4 text-xs text-emerald-800">
+      <div className="rounded-xl bg-[var(--bege-2)] p-4 text-xs text-[var(--vermelho-2)]">
         <p className="font-bold">✓ Perfil pronto para revisão</p>
         <p className="mt-1">Revise os dados preenchidos. Após concluir, seu perfil poderá entrar na simulação do Feed de Investidores.</p>
       </div>
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
         {Object.entries(data).slice(0, 8).map(([key, value]) => <div key={key} className="rounded-lg bg-slate-50 p-3 text-[9px]"><b>{key}</b><p className="mt-1 truncate text-slate-500">{String(value)}</p></div>)}
       </div>
-      <button type="button" onClick={() => router.push("/home/startup")} className="mt-5 w-full rounded-lg bg-emerald-600 py-3 text-xs font-bold text-white">Publicar Perfil e Entrar no Deal Flow</button>
+      <button type="button" onClick={() => router.push("/home/startup")} className="mt-5 w-full rounded-lg bg-[var(--vermelho-2)] py-3 text-xs font-bold text-white hover:bg-[var(--vermelho-1)]">Publicar Perfil e Entrar no Deal Flow</button>
     </Section>
   </OnboardingShell>;
 }

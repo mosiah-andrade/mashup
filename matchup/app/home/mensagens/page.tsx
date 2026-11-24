@@ -63,7 +63,7 @@ function MensagensContent() {
   };
 
   return (
-    <section className="flex h-full min-h-0 flex-col bg-[#f8faff]">
+    <section className="flex h-full min-h-0 flex-col bg-slate-50">
       <header className="relative flex min-h-[76px] shrink-0 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
           <div className="relative shrink-0">
@@ -72,8 +72,8 @@ function MensagensContent() {
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="truncate text-[15px] font-semibold text-slate-900">{person.name}</h1>
-              <span className="rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[9px] font-semibold text-blue-700">{person.kind === "investidor" ? "Investidor" : "Startup"}</span>
-              <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-600">✦ {person.matchScore}% Match</span>
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[9px] font-semibold text-slate-700">{person.kind === "investidor" ? "Investidor" : "Startup"}</span>
+              <span className="rounded-full border border-[var(--bege-3)] bg-[var(--bege-2)] px-2 py-0.5 text-[9px] font-semibold text-[var(--vermelho-2)]">✦ {person.matchScore}% Match</span>
             </div>
             <p className="truncate text-[10px] text-slate-500">{person.headline} • {person.location}</p>
           </div>
@@ -81,7 +81,7 @@ function MensagensContent() {
 
         <div className="flex items-center gap-2">
           <button type="button" onClick={() => setDataRoomOpen((value) => !value)} className="hidden h-9 items-center gap-2 rounded-xl bg-slate-100 px-4 text-[11px] font-semibold text-slate-700 hover:bg-slate-200 sm:flex"><FileText size={14} /> Data Room</button>
-          <button type="button" onClick={() => setScheduleOpen((value) => !value)} className="hidden h-9 items-center gap-2 rounded-xl bg-blue-600 px-4 text-[11px] font-semibold text-white hover:bg-blue-700 sm:flex"><CalendarDays size={14} /> Agendar Call</button>
+          <button type="button" onClick={() => setScheduleOpen((value) => !value)} className="hidden h-9 items-center gap-2 rounded-xl bg-[var(--vermelho-2)] px-4 text-[11px] font-semibold text-white hover:bg-[var(--vermelho-1)] sm:flex"><CalendarDays size={14} /> Agendar Call</button>
           <button type="button" onClick={() => setMenuOpen((value) => !value)} aria-label="Mais opções" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"><MoreVertical size={17} /></button>
           {menuOpen && (
             <div className="absolute right-4 top-14 z-30 w-48 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl">
@@ -97,15 +97,15 @@ function MensagensContent() {
           <div className="mx-auto flex max-w-[760px] items-center justify-between gap-3">
             {dataRoomOpen ? (
               <div className="flex min-w-0 items-center gap-3">
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-red-50 text-red-500"><FileText size={17} /></div>
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[var(--bege-2)] text-[var(--vermelho-2)]"><FileText size={17} /></div>
                 <div><p className="text-[10px] font-semibold text-slate-700">Data Room mock</p><p className="text-[9px] text-slate-400">Pitch Deck, métricas e documentos jurídicos disponíveis para simulação.</p></div>
-                <button type="button" onClick={() => { send("📂 Compartilhei o Data Room com você.", "file"); setDataRoomOpen(false); }} className="rounded-lg bg-blue-600 px-3 py-2 text-[9px] font-semibold text-white">Compartilhar</button>
+                <button type="button" onClick={() => { send("📂 Compartilhei o Data Room com você.", "file"); setDataRoomOpen(false); }} className="rounded-lg bg-[var(--vermelho-2)] px-3 py-2 text-[9px] font-semibold text-white">Compartilhar</button>
               </div>
             ) : (
               <div className="flex min-w-0 items-center gap-2">
-                <CalendarDays size={17} className="text-blue-600" />
+                <CalendarDays size={17} className="text-[var(--vermelho-2)]" />
                 <div className="flex flex-wrap gap-2">
-                  {["Hoje 16:00", "Amanhã 11:00", "Quinta 15:30"].map((time) => <button key={time} type="button" onClick={() => sendSchedule(time)} className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-[9px] font-semibold text-blue-700 hover:bg-blue-100">{time}</button>)}
+                  {["Hoje 16:00", "Amanhã 11:00", "Quinta 15:30"].map((time) => <button key={time} type="button" onClick={() => sendSchedule(time)} className="rounded-lg border border-[var(--bege-3)] bg-[var(--bege-2)] px-3 py-2 text-[9px] font-semibold text-[var(--vermelho-2)] hover:bg-[var(--bege-1)]">{time}</button>)}
                 </div>
               </div>
             )}
@@ -116,9 +116,9 @@ function MensagensContent() {
 
       <div className="min-h-0 flex-1 overflow-auto px-4 py-6 sm:px-6">
         <div className="mx-auto max-w-[760px]">
-          <div className="mb-6 rounded-2xl border border-blue-100 bg-white p-5 text-center shadow-sm">
-            <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-full bg-pink-500 text-white">♥</div>
-            <h2 className="text-[14px] font-bold text-slate-800">Conexão liberada no MatchUp</h2>
+          <div className="mb-6 rounded-2xl border border-slate-100 bg-white p-5 text-center shadow-sm">
+            <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-full bg-[var(--bege-2)] text-[var(--vermelho-2)]">♥</div>
+            <h2 className="text-[14px] font-bold text-slate-800">Conexão liberada no ENLA</h2>
             <p className="mt-1 text-[11px] text-slate-400">Use o chat para alinhar os próximos passos. Todas as mensagens ficam persistidas localmente neste mock.</p>
           </div>
 
@@ -131,7 +131,7 @@ function MensagensContent() {
                   {message.from === "them" && <img src={person.image} alt="" className="mt-1 h-8 w-8 shrink-0 rounded-full object-cover" />}
                   <div className={"flex max-w-[72%] flex-col " + (message.from === "me" ? "items-end" : "items-start")}>
                     <div className="mb-1 flex items-center gap-2"><span className="text-[10px] font-semibold text-slate-800">{message.from === "me" ? "Você" : person.name}</span><span className="text-[9px] text-slate-400">{message.time}</span></div>
-                    <div className={"whitespace-pre-line rounded-2xl px-4 py-3 text-[11px] leading-5 shadow-sm " + (message.from === "me" ? "rounded-tr-sm bg-blue-600 text-white" : "rounded-tl-sm border border-slate-200 bg-white text-slate-600")}>{message.text}</div>
+                    <div className={"whitespace-pre-line rounded-2xl px-4 py-3 text-[11px] leading-5 shadow-sm " + (message.from === "me" ? "rounded-tr-sm bg-[var(--vermelho-2)] text-white" : "rounded-tl-sm border border-slate-200 bg-white text-slate-600")}>{message.text}</div>
                   </div>
                 </div>
               ))}
@@ -149,14 +149,14 @@ function MensagensContent() {
 
           <div className="flex h-14 items-center gap-3 rounded-2xl border border-slate-300 bg-white px-3 shadow-sm">
             <input ref={fileRef} type="file" className="hidden" onChange={handleFile} />
-            <button type="button" onClick={() => fileRef.current?.click()} title="Anexar arquivo" className="text-slate-400 hover:text-blue-600"><Paperclip size={18} /></button>
+            <button type="button" onClick={() => fileRef.current?.click()} title="Anexar arquivo" className="text-slate-400 hover:text-[var(--vermelho-2)]"><Paperclip size={18} /></button>
             <input value={text} onChange={(event) => setText(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); sendMessage(); } }} placeholder={"Escreva uma mensagem para " + person.name + "..."} className="flex-1 bg-transparent text-[12px] text-slate-700 outline-none placeholder:text-slate-400" />
-            <button type="button" onClick={() => setText((value) => value + (value ? " " : "") + "🙂")} title="Adicionar emoji" className="text-slate-400 hover:text-blue-600"><Smile size={18} /></button>
-            <button type="button" onClick={sendMessage} aria-label="Enviar mensagem" className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 text-white hover:bg-blue-700"><Send size={16} /></button>
+            <button type="button" onClick={() => setText((value) => value + (value ? " " : "") + "🙂")} title="Adicionar emoji" className="text-slate-400 hover:text-[var(--vermelho-2)]"><Smile size={18} /></button>
+            <button type="button" onClick={sendMessage} aria-label="Enviar mensagem" className="grid h-9 w-9 place-items-center rounded-xl bg-[var(--vermelho-2)] text-white hover:bg-[var(--vermelho-1)]"><Send size={16} /></button>
           </div>
 
           <div className="mt-2 flex items-center justify-between text-[8px] text-slate-400">
-            <span className="flex items-center gap-1"><ShieldCheck size={11} className="text-emerald-500" /> Canal preparado para integração segura.</span>
+            <span className="flex items-center gap-1"><ShieldCheck size={11} className="text-[var(--vermelho-2)]" /> Canal preparado para integração segura.</span>
             <span>Enter envia • Shift+Enter quebra linha</span>
           </div>
         </div>
@@ -166,5 +166,5 @@ function MensagensContent() {
 }
 
 export default function MensagensPage() {
-  return <Suspense fallback={<div className="flex h-full items-center justify-center bg-[#f8faff] text-sm text-slate-400">Carregando mensagens...</div>}><MensagensContent /></Suspense>;
+  return <Suspense fallback={<div className="flex h-full items-center justify-center bg-slate-50 text-sm text-slate-400">Carregando mensagens...</div>}><MensagensContent /></Suspense>;
 }

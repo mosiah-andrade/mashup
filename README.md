@@ -1,10 +1,10 @@
-# MatchUp
+# ENLA
 
 Plataforma de matchmaking para startups e investidores, focada em conectar founders com capital, contexto e oportunidades relevantes em um fluxo simples, visual e estratégico.
 
 ## Visão geral
 
-O MatchUp foi pensado para reduzir a fricção entre startups em busca de financiamento e investidores que buscam oportunidades com alinhamento real de negócio, setor e governança. A experiência combina onboarding, perfil de empresa/investidor, match inteligente, chat e visão de pipeline de oportunidades.
+O ENLA foi pensado para reduzir a fricção entre startups em busca de financiamento e investidores que buscam oportunidades com alinhamento real de negócio, setor e governança. A experiência combina onboarding, perfil de empresa/investidor, match inteligente, chat e visão de pipeline de oportunidades.
 
 A interface atual funciona como uma prova de conceito de produto, com dados mockados para simular cenários de relacionamento e decisão.
 
@@ -31,7 +31,7 @@ A interface atual funciona como uma prova de conceito de produto, com dados mock
 ## Estrutura do projeto
 
 ```bash
-matchup/
+ENLA/
 ├── app/
 │   ├── components/
 │   ├── home/
